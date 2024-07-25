@@ -157,7 +157,7 @@
 // export default MainLayout;
 
 // src/layout/MainLayout.tsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   DashboardOutlined,
   TeamOutlined,
@@ -172,6 +172,8 @@ import Dashboard from "../pages/Dashboard"; // Import other components
 import UpdateMember from "../pages/UpdateMember";
 import DeleteMember from "../pages/DeleteMember";
 import ViewMembers from "../pages/ViewMembers";
+import LoginForm from "../pages/login/Login";
+import { useNavigate } from "react-router-dom";
 // import ViewMember from "../pages/ViewMember";
 // import TransactionsHistory from "../pages/TransactionsHistory";
 
@@ -253,6 +255,8 @@ const MainLayout: React.FC = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
+  const [isLogged, setIsLogged] = useState(false);
+  const navigate = useNavigate();
   const [currentContent, setCurrentContent] = useState<React.ReactNode>(
     <Dashboard />
   );
@@ -280,55 +284,69 @@ const MainLayout: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) setIsLogged(true);
+    else {
+      navigate("/login");
+    }
+  }, []);
+
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      <Header
-        style={{
-          display: "flex",
-          alignItems: "center",
-          background: colorBgContainer,
-        }}
-      >
-        <div className="demo-logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["1"]}
-          items={headerItems}
-          style={{ flex: 1, minWidth: 0 }}
-        />
-      </Header>
-      <Layout>
-        <Sider width={200} style={{ background: colorBgContainer }}>
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={["/dashboard"]}
-            defaultOpenKeys={["manage-members"]}
-            style={{ height: "100%", borderRight: 0 }}
-            items={sidebarItems}
-            onClick={onMenuClick}
-          />
-        </Sider>
-        <Layout style={{ padding: "0 24px 24px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
-          <Content
+    <>
+      {isLogged ? (
+        <Layout style={{ minHeight: "100vh" }}>
+          <Header
             style={{
-              padding: 24,
-              margin: 0,
-              minHeight: 280,
+              display: "flex",
+              alignItems: "center",
               background: colorBgContainer,
-              borderRadius: borderRadiusLG,
             }}
           >
-            {currentContent}
-          </Content>
+            <div className="demo-logo" />
+            <Menu
+              theme="dark"
+              mode="horizontal"
+              defaultSelectedKeys={["1"]}
+              items={headerItems}
+              style={{ flex: 1, minWidth: 0 }}
+            />
+          </Header>
+          <Layout>
+            <Sider width={200} style={{ background: colorBgContainer }}>
+              <Menu
+                mode="inline"
+                defaultSelectedKeys={["/dashboard"]}
+                defaultOpenKeys={["manage-members"]}
+                style={{ height: "100%", borderRight: 0 }}
+                items={sidebarItems}
+                onClick={onMenuClick}
+              />
+            </Sider>
+            <Layout style={{ padding: "0 24px 24px" }}>
+              <Breadcrumb style={{ margin: "16px 0" }}>
+                <Breadcrumb.Item>Home</Breadcrumb.Item>
+                <Breadcrumb.Item>List</Breadcrumb.Item>
+                <Breadcrumb.Item>App</Breadcrumb.Item>
+              </Breadcrumb>
+              <Content
+                style={{
+                  padding: 24,
+                  margin: 0,
+                  minHeight: 280,
+                  background: colorBgContainer,
+                  borderRadius: borderRadiusLG,
+                }}
+              >
+                {currentContent}
+              </Content>
+            </Layout>
+          </Layout>
         </Layout>
-      </Layout>
-    </Layout>
+      ) : (
+        <>Loading.....</>
+      )}
+    </>
   );
 };
 
