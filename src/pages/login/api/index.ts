@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5050";
+export const API_BASE_URL = "http://localhost:5050";
 
 // API call to validate credentials
 export const validateCredentials = async (email: string, password: string) => {
@@ -42,7 +42,9 @@ export const registerAdminAccount = async (
 // API call to get admin accounts
 export const getAdminAccounts = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/getadminaccounts`);
+    const response = await axios.get(
+      `${API_BASE_URL}/register/getadminaccounts`
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching admin accounts:", error);
@@ -154,6 +156,31 @@ export const getMemberAccounts = async () => {
 };
 
 // API call to update member points
+// export const updateMemberPoints = async (data: {
+//   member: string;
+//   points: number;
+//   type: string;
+//   description: string;
+// }) => {
+//   try {
+//     const token = localStorage.getItem("token");
+//     const response = await axios.post(
+//       `${API_BASE_URL}/points/updatememberpoints`,
+//       data,
+//       {
+//         headers: {
+//           "x-auth-token": token,
+//         },
+//       }
+//     );
+//     return response;
+//   } catch (error) {
+//     console.error("Error updating member points:", error);
+//     throw error;
+//   }
+// };
+
+// API call to update member points
 export const updateMemberPoints = async (data: {
   member: string;
   points: number;
@@ -163,7 +190,7 @@ export const updateMemberPoints = async (data: {
   try {
     const token = localStorage.getItem("token");
     const response = await axios.post(
-      `${API_BASE_URL}/points/updatememberpoints`,
+      `${API_BASE_URL}/points/updatepoints`,
       data,
       {
         headers: {
@@ -171,9 +198,21 @@ export const updateMemberPoints = async (data: {
         },
       }
     );
-    return response;
+    return response.data;
   } catch (error) {
     console.error("Error updating member points:", error);
+    throw error;
+  }
+};
+
+export const getTransactions = async () => {
+  try {
+    const response = await axios.get(
+      `${API_BASE_URL}/transactions/gettransactions`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching transactions:", error);
     throw error;
   }
 };

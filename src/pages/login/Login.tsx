@@ -16,7 +16,8 @@ const LoginForm: React.FC = () => {
       console.log("Login successful:", result);
 
       // Store the token in local storage
-      localStorage.setItem("token", result);
+      localStorage.setItem("token", result.token);
+      localStorage.setItem("name", result.userData);
 
       // Handle successful login
       navigate("/main-layout"); // Redirect to dashboard
@@ -65,6 +66,10 @@ const LoginForm: React.FC = () => {
             label="Email"
             rules={[{ required: true, message: "Please input your email!" }]}
             placeholder="Enter your email"
+            fieldProps={{
+              type: "email",
+              autoComplete: "email",
+            }}
             style={{ marginBottom: 16 }}
           />
           <ProFormText.Password

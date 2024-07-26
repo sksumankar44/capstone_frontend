@@ -9,7 +9,7 @@ import AddMember from "./pages/AddMember";
 import UpdateMember from "./pages/UpdateMember";
 import DeleteMember from "./pages/DeleteMember";
 import ViewMembers from "./pages/ViewMembers";
-//import TransactionsHistory from "./pages/TransactionsHistory";
+import TransactionManagementForm from "./pages/TransactionManagementForm"; // Import the component
 
 const Routes: React.FC = () => {
   return (
@@ -22,10 +22,13 @@ const Routes: React.FC = () => {
       <Route path="/update-member" element={<UpdateMember />} />
       <Route path="/delete-member" element={<DeleteMember />} />
       <Route path="/view-members" element={<ViewMembers />} />
-      {/* <Route path="transactions-history" element={<TransactionsHistory />} /> */}
+      <Route
+        path="/transaction-management"
+        element={<TransactionManagementForm />}
+      />{" "}
+      {/* Add the route */}
       <Route path="/" element={<Navigate to="/login" />} />
       <Route path="*" element={<Navigate to="/login" />} />
-      {/* <Route path="dashboard" element={<Navigate to="/dashboard" />} /> */}
     </RouterRoutes>
   );
 };

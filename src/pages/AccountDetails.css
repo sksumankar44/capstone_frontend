@@ -1,0 +1,16 @@
+.account-details-container {
+  padding: 24px;
+}
+
+.account-details-card {
+  margin-bottom: 16px;
+}
+
+.account-details-card .ant-card-body {
+  display: flex;
+  align-items: center;
+}
+
+.ant-avatar {
+  margin-right: 16px;
+}
