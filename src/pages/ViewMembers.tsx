@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Card, Table, message, Button, Popconfirm } from "antd";
+import { Card, Table, message, Button, Popconfirm, Tag, Space } from "antd";
 import { getMemberAccounts, deleteMemberAccount } from "../pages/login/api"; // Adjust the import path as necessary
+import "./ViewMembers.css"; // Add this line to import custom CSS
 
 const ViewMembers: React.FC = () => {
   const [members, setMembers] = useState<any[]>([]);
@@ -28,27 +29,6 @@ const ViewMembers: React.FC = () => {
     fetchMembers();
   }, []);
 
-  //   const handleDelete = async (email: string) => {
-  //     console.log(`Attempting to delete member with email: ${email}`);
-  //     try {
-  //       setLoading(true);
-  //       const result = await deleteMemberAccount(email);
-  //       console.log(result, "Delete member result");
-
-  //       if (result.status === 200) {
-  //         // Adjust based on the actual status field from API response
-  //         message.success("Member deleted successfully");
-  //         setMembers(members.filter((member) => member.email !== email));
-  //       } else {
-  //         message.error(result.message || "Failed to delete member");
-  //       }
-  //     } catch (error) {
-  //       message.error("Failed to delete member");
-  //       console.error("Error deleting member:", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
   const handleDelete = async (email: string) => {
     console.log(`Attempting to delete member with email: ${email}`);
     try {
@@ -71,11 +51,18 @@ const ViewMembers: React.FC = () => {
     }
   };
 
+  const getTagColor = (points: number) => {
+    if (points >= 500) return "gold";
+    if (points > 50) return "green";
+    return "volcano";
+  };
+
   const columns = [
     {
       title: "Member Name",
       dataIndex: "member_name",
       key: "member_name",
+      render: (text: string) => <a>{text}</a>,
     },
     {
       title: "Email",
@@ -86,48 +73,41 @@ const ViewMembers: React.FC = () => {
       title: "Points",
       dataIndex: "points",
       key: "points",
+      render: (points: number) => (
+        <Tag color={getTagColor(points)} key={points}>
+          {points}
+        </Tag>
+      ),
     },
     {
       title: "Action",
       key: "action",
       render: (text: any, record: any) => (
-        <Popconfirm
-          title="Are you sure to delete this member?"
-          onConfirm={() => handleDelete(record.email)}
-          okText="Yes"
-          cancelText="No"
-        >
-          <Button type="primary" danger>
-            Delete
-          </Button>
-        </Popconfirm>
+        <Space size="middle">
+          <Popconfirm
+            title="Are you sure to delete this member?"
+            onConfirm={() => handleDelete(record.email)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button type="primary" danger>
+              Delete
+            </Button>
+          </Popconfirm>
+        </Space>
       ),
     },
   ];
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-        background: "#f0f2f5",
-      }}
-    >
-      <Card
-        title="View Members"
-        style={{
-          width: 800,
-          borderRadius: 10,
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-        }}
-      >
+    <div className="view-members-container">
+      <Card title="View Members" className="view-members-card">
         <Table
           columns={columns}
           dataSource={members}
           loading={loading}
           rowKey="email"
+          className="view-members-table"
         />
       </Card>
     </div>
