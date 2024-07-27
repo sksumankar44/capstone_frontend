@@ -72,6 +72,10 @@ const RegisterForm: React.FC = () => {
             rules={[{ required: true, message: "Please input your email!" }]}
             placeholder="Enter your email"
             style={{ marginBottom: 16 }}
+            fieldProps={{
+              type: "email",
+              autoComplete: "email",
+            }}
           />
           <ProFormText.Password
             name="password"
