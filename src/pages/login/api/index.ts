@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_BASE_URL = "http://localhost:5050";
+export const API_BASE_URL = "https://capstone-backend-a2cf.onrender.com";
 
 // API call to validate credentials
 export const validateCredentials = async (email: string, password: string) => {

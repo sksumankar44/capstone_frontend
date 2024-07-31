@@ -1,16 +1,57 @@
+body {
+  overflow-y: hidden !important;
+}
+
 .account-details-container {
   padding: 24px;
+  background-color: #f0f2f5;
+  height: 100%;
+  overflow: hidden !important; /* Prevent scrollbar from appearing */
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.account-card-col {
+  display: flex;
+  justify-content: center;
 }
 
 .account-details-card {
-  margin-bottom: 16px;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #ffffff, #f0f2f5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden !important;
 }
 
-.account-details-card .ant-card-body {
+.account-details-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2), 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  color: #333;
+}
+
+.delete-button {
+  color: #ff4d4f;
+}
+
+.delete-button:hover {
+  color: #d42a2a;
+}
+
+.ant-card-cover {
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
-.ant-avatar {
-  margin-right: 16px;
+.ant-card-actions {
+  display: flex;
+  justify-content: center;
 }

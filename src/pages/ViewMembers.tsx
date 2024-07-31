@@ -1073,11 +1073,13 @@ const ViewMembers: React.FC = () => {
       dataIndex: "member_name",
       key: "member_name",
       render: (text: string) => <a>{text}</a>,
+      className: "table-header",
     },
     {
       title: "Email",
       dataIndex: "email",
       key: "email",
+      className: "table-header",
     },
     {
       title: "Points",
@@ -1088,6 +1090,7 @@ const ViewMembers: React.FC = () => {
           {points}
         </Tag>
       ),
+      className: "table-header",
     },
     {
       title: "Action",
@@ -1109,6 +1112,7 @@ const ViewMembers: React.FC = () => {
           </Popconfirm>
         </Space>
       ),
+      className: "table-header",
     },
   ];
 

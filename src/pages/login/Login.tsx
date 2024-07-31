@@ -3,6 +3,7 @@ import { Card, Button, Form, Typography, message } from "antd";
 import { ProForm, ProFormText } from "@ant-design/pro-components";
 import { Link, useNavigate } from "react-router-dom";
 import { validateCredentials } from "./api"; // Import the API function
+import backgroundVideo from "../../assets/Gifts.mp4"; // Import the video
 
 const { Title } = Typography;
 
@@ -34,74 +35,112 @@ const LoginForm: React.FC = () => {
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        position: "relative",
+        width: "100%",
         height: "100vh",
-        background: "rgb(8 145 178)", // Background color
+        overflow: "hidden",
       }}
     >
-      <Card
-        title={
-          <Title level={3} style={{ margin: 0, textAlign: "center" }}>
-            Login
-          </Title>
-        }
+      <video
+        autoPlay
+        loop
+        muted
         style={{
-          width: 350,
-          borderRadius: 10,
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-          backgroundColor: "#ffffff",
+          position: "absolute",
+          top: 0,
+          left: "-20%", // Adjust this value to shift the video to the left
+          width: "100%", // Make the video wider to ensure it covers the screen
+          height: "110%",
+          objectFit: "cover",
+          zIndex: -1,
+          filter: "brightness(1.4) contrast(2)", // Adjust brightness and contrast
         }}
       >
-        <ProForm
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          submitter={{
-            render: () => null, // Remove default buttons
+        <source src={backgroundVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end", // Align the card to the right
+          alignItems: "center",
+          height: "100%",
+          backgroundColor: "rgba(111,2, 155, 0.1)", // Optional: add a dark overlay for better text contrast
+          paddingRight: "10%", // Adjust the padding as needed
+        }}
+      >
+        <Card
+          title={
+            <Title
+              level={3}
+              style={{ margin: 0, textAlign: "center", color: "purple" }}
+            >
+              Login
+            </Title>
+          }
+          style={{
+            width: 350,
+
+            borderRadius: 10,
+            boxShadow: "0 4px 8px rgba(111, 1, 155, 0.9)",
+            backgroundColor: "rgba(111, 1, 155, 0.28)", // Make the card slightly transparent
           }}
         >
-          <ProFormText
-            name="email"
-            label="Email"
-            rules={[{ required: true, message: "Please input your email!" }]}
-            placeholder="Enter your email"
-            fieldProps={{
-              type: "email",
-              autoComplete: "email",
+          <ProForm
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+            submitter={{
+              render: () => null, // Remove default buttons
             }}
-            style={{ marginBottom: 16 }}
-          />
-          <ProFormText.Password
-            name="password"
-            label="Password"
-            rules={[{ required: true, message: "Please input your password!" }]}
-            placeholder="Enter your password"
-            style={{ marginBottom: 24 }}
-          />
-          <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              style={{
-                width: "100%",
-                backgroundColor: "#1890ff", // Ant Design blue
-                borderColor: "#1890ff",
-                borderRadius: 5,
-                padding: "10px",
-                fontSize: "16px",
+          >
+            <ProFormText
+              name="email"
+              label="Email"
+              rules={[{ required: true, message: "Please input your email!" }]}
+              placeholder="Enter your email"
+              fieldProps={{
+                type: "email",
+                autoComplete: "email",
+                style: { backgroundColor: "#F4C0FF" },
               }}
-            >
-              Sign In
-            </Button>
-          </Form.Item>
-        </ProForm>
-        <div style={{ textAlign: "center", marginTop: "10px" }}>
-          <Link to="/register" style={{ color: "#1890ff", fontSize: "14px" }}>
-            Don't have an account? Register here
-          </Link>
-        </div>
-      </Card>
+              style={{ marginBottom: 16 }}
+            />
+            <ProFormText.Password
+              name="password"
+              label="Password"
+              rules={[
+                { required: true, message: "Please input your password!" },
+              ]}
+              placeholder="Enter your password"
+              fieldProps={{
+                style: { backgroundColor: "#F4C0FF" }, // Light pink background
+              }}
+              style={{ marginBottom: 24 }}
+            />
+            <Form.Item>
+              <Button
+                type="primary"
+                htmlType="submit"
+                style={{
+                  width: "100%",
+                  backgroundColor: "#1890ff", // Ant Design blue
+                  borderColor: "#1890ff",
+                  borderRadius: 5,
+                  padding: "10px",
+                  fontSize: "16px",
+                }}
+              >
+                Sign In
+              </Button>
+            </Form.Item>
+          </ProForm>
+          <div style={{ textAlign: "center", marginTop: "10px" }}>
+            <Link to="/register" style={{ color: "#1890ff", fontSize: "14px" }}>
+              Don't have an account? Register here
+            </Link>
+          </div>
+        </Card>
+      </div>
     </div>
   );
 };

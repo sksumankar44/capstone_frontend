@@ -1,0 +1,42 @@
+.dashboard {
+  padding: 20px;
+  overflow-y: scroll !important;
+}
+
+.dashboard .ant-card {
+  border-radius: 10px;
+}
+
+.dashboard .ant-card-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.dashboard .ant-statistic {
+  text-align: center;
+}
+
+.dashboard .ant-card-body {
+  padding: 10px;
+}
+
+.pie-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pie-chart-container canvas {
+  max-width: 100%;
+  max-height: 250px; /* Reduced height to match card size */
+}
+
+.bar-chart-container {
+  height: 300px; /* Ensure this matches the pie chart height */
+}
+
+.small-card {
+  width: 100%; /* Full width */
+  max-width: 600px; /* Adjust as needed */
+  margin: auto; /* Center the card */
+}
