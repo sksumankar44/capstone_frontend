@@ -6,6 +6,7 @@
     "@ant-design/icons": "^5.4.0",
     "@ant-design/pro-components": "^2.7.14",
     "@ant-design/pro-layout": "^7.19.11",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@supabase/supabase-js": "^2.45.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
