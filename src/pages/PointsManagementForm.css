@@ -1,5 +1,29 @@
 /* PointsManagementForm.css */
 
+.points-management-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  flex: 1;
+  background-image: url("../assets/comviva_logo.png"); /* Ensure this path is correct */
+  background-size: cover;
+  background-position: center;
+}
+
+.card-content {
+  flex: 1;
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-left: 20px; /* Add some space between the image and the card */
+}
+
 /* Input fields and select box border color on focus */
 .ant-input,
 .ant-select-selector,
@@ -38,21 +62,4 @@
 .ant-btn-primary:focus {
   background-color: #40a9ff;
   border-color: #40a9ff;
-}
-/* PointsManagementForm.css */
-.card-container {
-  height: 30vh; /* Full viewport height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.card-content {
-  max-width: 500px;
-  width: 100%;
-
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  background-color: #f9f9f9;
 }
