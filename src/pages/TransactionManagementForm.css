@@ -1,17 +1,17 @@
 /* TransactionManagementForm.css */
 .styled-table .ant-table-thead > tr > th {
-  background-color: #09549a; /* Dark solid color */
-  color: #ffffff; /* White text */
+  background-color: #09549a;
+  color: #ffffff;
   font-weight: bold;
   /* overflow-y: hidden; */
 }
 
 .styled-table .ant-table-tbody > tr > td {
-  background-color: #e6ecf2; /* Lighter background color for body */
+  background-color: #e6ecf2;
   color: #070808f6;
 }
 
 .styled-table .ant-table {
-  border: 1px solid #d9d9d9; /* Proper border for the table */
+  border: 1px solid #d9d9d9;
   border-radius: 4px;
 }

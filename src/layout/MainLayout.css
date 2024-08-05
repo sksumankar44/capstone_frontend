@@ -1,46 +1,4 @@
-/* .admin-info {
-  display: flex;
-  align-items: center;
-  animation: fadeIn 1.5s ease-in-out;
-}
-
-.admin-name {
-  margin-left: 8px;
-  font-weight: bold;
-  font-size: 16px;
-  color: red;
-  animation: slideIn 1.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  0% {
-    transform: translateX(20px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* ============================ */
-.row-credit {
-  background-color: #e6ffed; /* Light green */
-}
-
-.row-debit {
-  background-color: #ffe6e6; /* Light red */
-}
-*/ .admin-info {
+.admin-info {
   display: flex;
   align-items: center;
   animation: fadeIn 1.5s ease-in-out;
@@ -72,12 +30,4 @@
     transform: translateX(0);
     opacity: 1;
   }
-}
-
-.row-credit {
-  background-color: #e6ffed; /* Light green */
-}
-
-.row-debit {
-  background-color: #ffe6e6; /* Light red */
 }

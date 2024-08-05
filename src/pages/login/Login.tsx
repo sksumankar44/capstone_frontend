@@ -47,11 +47,11 @@ const LoginForm: React.FC = () => {
         muted
         style={{
           position: "absolute",
-          top: 0,
-          left: "-20%", // Adjust this value to shift the video to the left
+          top: -270,
+          left: "-15%", // Adjust this value to shift the video to the left
           width: "100%", // Make the video wider to ensure it covers the screen
-          height: "110%",
-          objectFit: "cover",
+          height: "180%",
+          objectFit: "contain",
           zIndex: -1,
           filter: "brightness(1.4) contrast(2)", // Adjust brightness and contrast
         }}
