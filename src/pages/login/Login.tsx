@@ -4,7 +4,7 @@ import { ProForm, ProFormText } from "@ant-design/pro-components";
 import { Link, useNavigate } from "react-router-dom";
 import { validateCredentials } from "./api"; // Import the API function
 import backgroundVideo from "../../assets/Gifts.mp4"; // Import the video
-
+import "./Login.css";
 const { Title } = Typography;
 
 const LoginForm: React.FC = () => {
