@@ -612,7 +612,7 @@ const MainLayout: React.FC = () => {
                 icon={<UserOutlined />}
               />
 
-              <Text className="admin-name">{localStorage.getItem("name")}</Text>
+              <Text className="admin-name">{adminName}</Text>
               <Button
                 type="default"
                 icon={<LogoutOutlined />}
